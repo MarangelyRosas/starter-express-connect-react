@@ -18,9 +18,16 @@ function BookmarkDetails() {
     }).catch(() => {
       navigate("/not-found")
     });
-  }, []);
+  }, [index, navigate]);
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    axios
+    .delete(`${process.env.REACT_APP_API_URL}/bookmarks/${index}`)
+    .then(() => {
+      navigate("/bookmarks");   
+  });
+};
+
   return (
     <article>
       <h3>
